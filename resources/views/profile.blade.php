@@ -19,7 +19,6 @@
                 <div id="time_chart" style="width:100%; height:500px;"></div>
             </div>
     </div>
-
 </body>
 
 </html>

@@ -22,6 +22,7 @@ Route::post('/ajaxupdate', 'LadderController@ajaxPost');
 Route::get('/ajaxupdate', 'Auth\LoginController@logout', function () {
     return abort(404);
 });
+
 Route::post('/ajaxsearch', 'LadderController@ajaxSearch');
 Route::get('/ajaxsearch', 'Auth\LoginController@logout', function () {
     return abort(404);

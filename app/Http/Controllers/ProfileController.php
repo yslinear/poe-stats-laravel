@@ -23,34 +23,28 @@ class ProfileController extends Controller
     {
         $account = Request('account');
         $timezone  = Request('timezone');
-        $gg = array();
-        $count = 0;
+        $result = array();
         for ($i = 0; $i  < 2; $i++) {
-            // if ($i == 0) return $timezone;
 
             if ($i == 0) $table = 'ggg_ladder_history';
             else $table = 'ggg_ssfladder_history';
             $character_name = DB::table($table)->select('character_id')->where('account_name', '=', $account)
                 ->groupby('character_id')->orderby(DB::raw('max(rank)'))->get();
 
-            // $cname_dec = json_decode(json_encode($character_name), true);
-            // foreach ($cname_dec as $json_d) {
             $data = DB::table($table)->select('cached_since',  'online')->where('account_name', '=', $account)
                 ->groupby('cached_since',  'online')->orderby('cached_since')->get();
             $data_dec = json_decode(json_encode($data), true);
             foreach ($data_dec as $json_e) {
                 $ntime = new DateTime($json_e['cached_since'], new \DateTimeZone($timezone));
-                // $ntime->setTimezone(new \DateTimeZone($timezone));
+
                 $time = array((int) $ntime->format('H'), (int) $ntime->format('i'), (int) $ntime->format('s'));
                 if ($json_e['online'] == true) $insert2array = array((int) $ntime->format('w'), $time, null);
                 else $insert2array = array((int) $ntime->format('w'),  null, $time);
-                array_push($gg, $insert2array);
+                array_push($result, $insert2array);
             }
-            // }
-            if ($gg != null) return $gg;
-            // else return 'cc';
+            if ($result != null) return $result;
         }
 
-        return $gg;
+        return $result;
     }
 }

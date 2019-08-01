@@ -39,7 +39,7 @@
         </div>
         <div class="row">
             <div class="col table-responsive-sm">
-                <table class="table table-hover table-light table-striped table-sm " style="min-width: 100%"
+                <table class="table table-hover table-light table-striped table-sm " style="min-width: 550px"
                     id="datatable">
                 </table>
             </div>
@@ -149,6 +149,5 @@ $('#searchBox').keyup(function(event) {
     $(document).ready(function(){
         $("#choose_league").text('Legion');
         changePage(1);
-        $('[data-toggle="tooltip"]').tooltip();
     });
 </script>

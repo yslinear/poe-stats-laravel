@@ -88,8 +88,8 @@ class LadderController extends Controller
                 if ($json_d['dead']) $output .= '<td class="text-muted">' . $json_d['character_name'] . '</td>';
                 else $output .= '<td>' . $json_d['character_name'] . '</td>';
                 $output .= '<td>';
-                if ($json_d['online'] == true) $output .= '<i class="fas fa-circle fa-fw" style="color: Green;text-align: center;"></i>';
-                else $output .= '<i class="fas fa-circle fa-fw" style="color: Lightgray;text-align: center;"></i>';
+                if ($json_d['online'] == true) $output .= '<i class="fas fa-xs fa-circle fa-fw" style="color: Green;text-align: center;"></i>';
+                else $output .= '<i class="fas fa-xs fa-circle fa-fw" style="color: Lightgray;text-align: center;"></i>';
                 $output .= '<a href="/profile/' . $json_d['account_name'] . '" target="_blank" class="text-info">' .
                     $json_d['account_name'] . '</a></td>' .
                     '<td>' . $json_d['character_level'] . '</td>' .
@@ -151,8 +151,8 @@ class LadderController extends Controller
                 if ($json_d['dead']) $output .= '<td class="text-muted">' . $json_d['character_name'] . '</td>';
                 else $output .= '<td>' . $json_d['character_name'] . '</td>';
                 $output .= '<td>';
-                if ($json_d['online'] == true) $output .= '<i class="fas fa-circle fa-fw" style="color: Green;text-align: center;"></i>';
-                else $output .= '<i class="fas fa-circle fa-fw" style="color: Lightgray;text-align: center;"></i>';
+                if ($json_d['online'] == true) $output .= '<i class="fas fa-xs fa-circle fa-fw" style="color: Green;text-align: center;"></i>';
+                else $output .= '<i class="fas fa-xs fa-circle fa-fw" style="color: Lightgray;text-align: center;"></i>';
                 $output .= '<a href="/profile/' . $json_d['account_name'] . '" target="_blank" class="text-info">' .
                     $json_d['account_name'] . '</a></td>' .
                     '<td>' . $json_d['character_level'] . '</td>' .
