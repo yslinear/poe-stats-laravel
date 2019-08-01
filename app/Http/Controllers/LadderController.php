@@ -85,7 +85,7 @@ class LadderController extends Controller
             foreach ($ladder_dec as $json_d) {
                 $output .= '<tr>' .
                     '<th scope="row">' . $json_d['rank'] . '</th>';
-                if ($json_d['dead']) $output .= '<td class="text-danger">' . $json_d['character_name'] . '</td>';
+                if ($json_d['dead']) $output .= '<td class="text-muted">' . $json_d['character_name'] . '</td>';
                 else $output .= '<td>' . $json_d['character_name'] . '</td>';
                 $output .= '<td>';
                 if ($json_d['online'] == true) $output .= '<i class="fas fa-circle fa-fw" style="color: Green;text-align: center;"></i>';
@@ -148,7 +148,7 @@ class LadderController extends Controller
             foreach ($temp_dec as $json_d) {
                 $output .= '<tr>' .
                     '<th scope="row">' . $json_d['rank'] . '</th>';
-                if ($json_d['dead']) $output .= '<td class="text-danger">' . $json_d['character_name'] . '</td>';
+                if ($json_d['dead']) $output .= '<td class="text-muted">' . $json_d['character_name'] . '</td>';
                 else $output .= '<td>' . $json_d['character_name'] . '</td>';
                 $output .= '<td>';
                 if ($json_d['online'] == true) $output .= '<i class="fas fa-circle fa-fw" style="color: Green;text-align: center;"></i>';
