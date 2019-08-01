@@ -77,7 +77,6 @@
                             $("#choose_league").text('SSF Legion');
                         else if($league=='ggg_tmpssfhc')
                             $("#choose_league").text('SSF HC Legion');
-
                         $("#choose_league").val($league);
                         document.getElementById("searchBox").value="";
                         // $(".d-flex").loading( "stop" ) // 停止 loading

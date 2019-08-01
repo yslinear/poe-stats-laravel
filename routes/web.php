@@ -19,8 +19,17 @@ Route::get('/ladder', 'pageController@ladder');
 Route::get('/ladder', 'LadderController@index');
 
 Route::post('/ajaxupdate', 'LadderController@ajaxPost');
+Route::get('/ajaxupdate', 'Auth\LoginController@logout', function () {
+    return abort(404);
+});
 Route::post('/ajaxsearch', 'LadderController@ajaxSearch');
+Route::get('/ajaxsearch', 'Auth\LoginController@logout', function () {
+    return abort(404);
+});
 
 Route::get('/profile/{account}', 'ProfileController@index');
 
-Route::get('/api', 'ProfileController@GetChartData');
+Route::post('/api', 'ProfileController@GetChartData');
+Route::get('/api', 'Auth\LoginController@logout', function () {
+    return abort(404);
+});
