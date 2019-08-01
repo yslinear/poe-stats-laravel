@@ -99,7 +99,7 @@
                 url: '/ajaxupdate',
                 headers:{ 'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content') },
                 data: {
-                    'league' : $('.choose_league').text(),
+                    'league' : $('#choose_league').val(),
                     'page':$page},
                 success:function(data){
                         $("#datatable").html(data['datatable']);
@@ -148,8 +148,8 @@ $('#searchBox').keyup(function(event) {
 });
 
     $(document).ready(function(){
-        changePage(1);
         $("#choose_league").text('Legion');
+        changePage(1);
         $('[data-toggle="tooltip"]').tooltip();
     });
 </script>
