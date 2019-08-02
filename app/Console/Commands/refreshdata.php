@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-ini_set('memory_limit',  '1024M');
+// ini_set('memory_limit',  '1024M');
 
 use Illuminate\Console\Command;
 use DB;
