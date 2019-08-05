@@ -11,11 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PageController@home');
 
-Route::get('/ladder', 'pageController@ladder');
+Route::get('/ladder', 'PageController@ladder');
 Route::get('/ladder', 'LadderController@index');
 
 Route::post('/ajaxupdate', 'LadderController@ajaxPost');
