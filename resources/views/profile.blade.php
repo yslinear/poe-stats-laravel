@@ -53,9 +53,9 @@
                             0: {color: 'green', pointSize: 4,},
                             1: {color: 'Lightgray' , pointSize: 2}, },
                             hAxis: {title: 'week' ,
-                                    viewWindow:{min:1,max:7},format: '#' ,
-                                    ticks: [{v:1, f:'Mon'}, {v:2, f:'Tue'}, {v:3, f:'Wed'},{v:4, f:'Thu'},
-                                            {v:5, f:'Fri'},{v:6, f:'Sat'}, {v:7, f:'Sun'}] },
+                                    viewWindow:{min:0,max:6},format: '#' ,
+                                    ticks: [{v:0, f:'Sun'}, {v:1, f:'Mon'}, {v:2, f:'Tue'}, {v:3, f:'Wed'},{v:4, f:'Thu'},
+                                            {v:5, f:'Fri'}, {v:6, f:'Sat'}] },
                             vAxis: {title: '' , format:'hh:mm a'}, };
                             var chart=new google.visualization.ScatterChart(document.getElementById('time_chart'));
                             chart.draw(data, options); }

@@ -84,7 +84,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Laravel
+                POE-stats
             </div>
 
             <div class="links">
