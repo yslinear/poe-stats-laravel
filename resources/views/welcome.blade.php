@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>POE-r</title>
+    <title>POE-R</title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145238664-1"></script>
@@ -94,7 +94,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                POE-stats
+                POE-R
             </div>
 
             <div class="links">
