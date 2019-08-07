@@ -4,12 +4,12 @@ namespace App\Console\Commands;
 
 // ini_set('memory_limit',  '1024M');
 
-use Illuminate\Console\Command;
 use DB;
-use GuzzleHttp\Promise;
-use GuzzleHttp\Pool;
-use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Client;
+use GuzzleHttp\Pool;
+use GuzzleHttp\Promise;
+use GuzzleHttp\Psr7\Request;
+use Illuminate\Console\Command;
 
 class refreshdata extends Command
 {
@@ -56,10 +56,11 @@ class refreshdata extends Command
                 $table_h = 'ggg_ssfladder_history';
             }
 
-            if ($x == 0 || $x == 1)
+            if ($x == 0 || $x == 1) {
                 $league = 'hc';
-            else if ($x == 2 || $x == 3)
+            } else if ($x == 2 || $x == 3) {
                 $league = 'sc';
+            }
 
             $character = json_decode(json_encode($value_d['character']), true);
             $account = json_decode(json_encode($value_d['account']), true);
@@ -103,7 +104,7 @@ class refreshdata extends Command
             $collecting_time = microtime(true) - $start_time;
             $formatted = sprintf("[%5d/15000] time= %4.3f s.", $value_d['rank'], $collecting_time);
             echo $formatted;
-            print_r(' name= ' .  $character['name']);
+            print_r(' name= ' . $character['name']);
             echo "\n";
         }
 
@@ -122,7 +123,7 @@ class refreshdata extends Command
 
         $url_legion_array = array(
             "/Hardcore%20Legion?offset=", "/SSF%20Legion%20HC?offset=",
-            "/SSF%20Legion?offset=", "/Legion?offset="
+            "/SSF%20Legion?offset=", "/Legion?offset=",
         );
 
         $start_time = microtime(true);
@@ -131,7 +132,7 @@ class refreshdata extends Command
 
             $urls = []; //清除
             for ($y = 0; $y < 15000; $y += 200) {
-                $urls[] =  $url . $y . '&limit=200';
+                $urls[] = $url . $y . '&limit=200';
             }
 
             $generator = function (array $urls) {
@@ -142,8 +143,10 @@ class refreshdata extends Command
             };
 
             $pool = new Pool($client, $generator($urls), [
+
                 'concurrency' => 5,
-                'fulfilled'   => function ($response) use ($x, $start_time) {
+                'fulfilled' => function ($response) use ($x, $start_time) {
+
                     $res_dec = json_decode($response->getBody(), true);
                     foreach ($res_dec['entries'] as $value_d) {
                         print_r('saving [' . $x . '/3]');
