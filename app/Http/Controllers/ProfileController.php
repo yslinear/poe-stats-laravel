@@ -21,7 +21,14 @@ class ProfileController extends Controller
     {
         $account = Request('account');
         $timezone = Request('timezone');
+
         $result = array();
+        for ($i = 0; $i < 7; $i++) {
+            for ($j = 0; $j < 24; $j++) {
+                array_push($result, [$i, $j, 0]);
+            }
+        }
+
         for ($i = 0; $i < 2; $i++) {
             if ($i == 0) {
                 $table = 'ggg_ladder_history';
@@ -37,15 +44,17 @@ class ProfileController extends Controller
             $data_dec = json_decode(json_encode($data), true);
             foreach ($data_dec as $json_e) {
                 $ntime = new DateTime($json_e['cached_since'], new \DateTimeZone($timezone));
-
-                $time = array((int) $ntime->format('H'), (int) $ntime->format('i'), (int) $ntime->format('s'));
+                $day = (int) $ntime->format('w');
+                $hour = (int) $ntime->format('H');
+                // $time = array((int) , (int) $ntime->format('i'), (int) $ntime->format('s'));
                 if ($json_e['online'] == true) {
-                    $insert2array = array((int) $ntime->format('w'), $time, null);
-                } else {
-                    $insert2array = array((int) $ntime->format('w'), null, $time);
-                }
+                    foreach ($result as $key => $field) {
+                        if ($result[$key][0] == $day && $result[$key][1] == $hour) {
+                            $result[$key][2]++;
+                        }
 
-                array_push($result, $insert2array);
+                    }
+                }
             }
             if ($result != null) {
                 return $result;

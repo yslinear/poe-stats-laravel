@@ -37,6 +37,7 @@
                 account: "{{ $account }}",
                 timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
             },
+
             success: function (result) {
                 console.log(JSON.stringify(result));
                 var myChart = echarts.init(document.getElementById('time-heatmap'));
@@ -46,13 +47,13 @@
                 ];
                 var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-                var data = [
-                    [0, 0, 1],
-                    [0, 2, 112311],
-                    [1, 1, 1]
-                ];
+                // var data = [
+                //     [0, 0, 1],
+                //     [0, 2, 112311],
+                //     [1, 1, 1]
+                // ];
 
-                data = data.map(function (item) {
+                data = result.map(function (item) {
                     return [item[0], item[1], item[2] || '-'];
                 });
 
@@ -81,7 +82,7 @@
                     },
                     visualMap: {
                         min: 0,
-                        max: 100,
+                        max: 5,
                         calculable: true,
                         orient: 'horizontal',
                         left: 'center',
