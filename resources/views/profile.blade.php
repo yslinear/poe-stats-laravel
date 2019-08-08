@@ -14,10 +14,17 @@
 <body>
     @include('includes.navbar')
     <div class="container-fluid">
-        <h4 class="mx-1 my-1">{{ $account }}</h1>
-            <div class="row">
+        <h1 class="mx-1 my-1">{{ $account }}</h1>
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="text-center">online time</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
                 <div id="time-heatmap" class="charts" style="width: 100%;height:650px;"></div>
             </div>
+        </div>
     </div>
 </body>
 
@@ -25,7 +32,9 @@
 
 {{-- echarts --}}
 <script>
+    var myChart = echarts.init(document.getElementById('time-heatmap'));
     $(document).ready(function () {
+
         // console.log(Intl.DateTimeFormat().resolvedOptions().timeZone);
         $.ajax({
             method: 'POST',
@@ -40,7 +49,7 @@
 
             success: function (result) {
                 console.log(JSON.stringify(result));
-                var myChart = echarts.init(document.getElementById('time-heatmap'));
+
 
                 var hours = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12',
                     '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23'
@@ -58,13 +67,18 @@
                 });
 
                 option = {
-                    tooltip: {
-                        position: 'top'
-                    },
+                    // tooltip: {
+                    //     position: 'top',
+                    //     formatter: function (data) {
+                    //         var res = '<div><p>time：' + data[1] + '</p></div>'
+                    //         return res;
+                    //     },
+                    // },
                     animation: false,
                     grid: {
-                        height: '50%',
-                        y: '10%'
+                        height: '80%',
+                        y: '0%',
+                        containLabel: true
                     },
                     xAxis: {
                         type: 'category',
@@ -84,6 +98,7 @@
                         min: 0,
                         max: 5,
                         calculable: true,
+                        show: false,
                         orient: 'horizontal',
                         left: 'center',
                         bottom: '15%'
@@ -109,5 +124,13 @@
             }
         })
     });
+
+</script>
+
+<script>
+    window.onresize = function () {
+        myChart.resize();
+        // activeChart.resize();
+    }
 
 </script>
