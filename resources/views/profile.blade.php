@@ -2,7 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <title>Profile-{{ $account }}</title>
 
     <!-- Styles -->
